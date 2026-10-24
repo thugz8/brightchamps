@@ -1,0 +1,35 @@
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
+def submit_form():
+    name = name_entry.get()
+    email = email_entry.get()
+    password = password_entry.get()
+    if not name or not email or not password:
+        messagebox.showerror("Error", "please fill all fields")
+    else:
+        messagebox.showinfo("Success!", "form is submitted")
+    name_entry.delete(0,tk.END)
+    email_entry.delete(0,tk.END)
+    password_entry.delete(0,tk.END)
+window = tk.Tk()
+style = ttk.Style()
+style.theme_use("clam")
+style.configure("TLabel", font=("Helvetica", 12), background="#dea60b")
+style.configure("TEntry", font=("Helvetica", 12))
+style.configure("TCombobox", font=("Helvetica", 12))
+name_label = ttk.Label(window, text="Name:")
+name_label.grid(row=0,column=0, padx=10,pady=5,sticky=tk.W)
+email_label = ttk.Label(window, text="Email:")
+email_label.grid(row=1,column=0, padx=10,pady=5,sticky=tk.W)
+password_label = ttk.Label(window, text="Password:")
+password_label.grid(row=2,column=0, padx=10,pady=5,sticky=tk.W)
+name_entry = ttk.Entry(window)
+name_entry.grid(row=0,column=1,padx=10,pady=5)
+email_entry = ttk.Entry(window)
+email_entry.grid(row=1,column=1,padx=10,pady=5)
+password_entry = ttk.Entry(window)
+password_entry.grid(row=2,column=1,padx=10,pady=5)
+submit_button = ttk.Button(window,text="Submit",command=submit_form,cursor="hand2")
+submit_button.grid(row=6,column=2,padx=10,pady=5,sticky=tk.W)
+window.mainloop()
